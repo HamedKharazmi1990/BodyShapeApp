@@ -15,6 +15,9 @@ struct DashboardView: View {
                 angle: 45
             )
             .padding()
+            
+            WelcomeMessageView(userName: "Nadine")
+            
             Spacer()
         }
     }
