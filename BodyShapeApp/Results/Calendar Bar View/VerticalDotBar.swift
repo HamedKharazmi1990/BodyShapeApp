@@ -17,6 +17,7 @@ struct VerticalDotBar: View {
     let selectedWeight: Int
     let selectedWeightUnits: String = "lb"
     let circleDim = 8.0
+    let delta = 10.0
     
     var body: some View {
         VStack(spacing: 0) {
@@ -41,10 +42,10 @@ struct VerticalDotBar: View {
                         Circle()
                             .fill(lightGreen)
                             .frame(
-                                width: circleDim + 10,
-                                height: circleDim + 10
+                                width: circleDim + delta,
+                                height: circleDim + delta
                             )
-                            .offset(y: -height * percent)
+                            .offset(y: -(height - circleDim) * percent)
                     }
                     
                     Circle()
@@ -52,7 +53,7 @@ struct VerticalDotBar: View {
                             width: circleDim,
                             height: circleDim
                         )
-                        .offset(y: -height * percent)
+                        .offset(y: -(height - circleDim) * percent)
                 }
             }
         }
@@ -60,14 +61,26 @@ struct VerticalDotBar: View {
 }
 
 #Preview {
-    VerticalDotBar(
-        percent: 1,
-        isSelected: true,
-        height: 100,
-        day: "Mon",
-        amount: 7,
-        offsetY: -5,
-        selectedWeight: 12
-    )
-    .padding()
+    HStack(alignment: .bottom) {
+        VerticalDotBar(
+            percent: 0.6,
+            isSelected: false,
+            height: 100,
+            day: "Mon",
+            amount: 7,
+            offsetY: -5,
+            selectedWeight: 12
+        )
+        .padding()
+        VerticalDotBar(
+            percent: 1,
+            isSelected: true,
+            height: 100,
+            day: "Tue",
+            amount: 7,
+            offsetY: -5,
+            selectedWeight: 12
+        )
+        .padding()
+    }
 }
