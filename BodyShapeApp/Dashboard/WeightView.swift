@@ -1,0 +1,54 @@
+//
+//  WeightView.swift
+//  BodyShapeApp
+//
+//  Created by Hamed Kharazmi on 07.01.26.
+//
+
+import SwiftUI
+
+struct WeightView: View {
+    let weight: CGFloat
+    let weightUnits: String
+    
+    var body: some View {
+        HStack(spacing: 50) {
+            VStack {
+                HStack {
+                    Text("\(weight, specifier: "%.2f")")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    Text(weightUnits)
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                }
+                Text("Current Weight")
+                    .font(.subheadline)
+                    .foregroundStyle(.gray)
+            }
+            
+            VStack(alignment: .leading, spacing: 5) {
+                HStack {
+                    Text("2.5")
+                        .font(.title)
+                    Text(weightUnits)
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                }
+                FillBarView(
+                    barWidth: 7,
+                    colorBG: .black,
+                    colorFill: lightGreen,
+                    percentage: 0.3
+                )
+                Text("Left To Gain")
+                    .font(.subheadline)
+                    .foregroundStyle(.gray)
+            }
+        }
+    }
+}
+
+#Preview {
+    WeightView(weight: 65.2, weightUnits: "lb")
+}
