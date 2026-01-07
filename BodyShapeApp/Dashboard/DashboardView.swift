@@ -17,9 +17,24 @@ struct DashboardView: View {
             .padding()
             
             VStack(alignment: .leading, spacing: 20) {
-                WelcomeMessageView(userName: "Nadine")
+                WelcomeMessageView(
+                    userName: "Nadine"
+                )
                 
-                WeightView(weight: 65.2, weightUnits: "lb")
+                WeightView(
+                    weight: 65.2,
+                    weightUnits: "lb"
+                )
+                
+                DataSummaryView(
+                    arrow: "arrow.down",
+                    calories: "4.569",
+                    numberOfMembersShowing: 2
+                )
+                
+                Spacer()
+                
+                ButtonsView()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
